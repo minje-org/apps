@@ -132,6 +132,8 @@ export class EmailCompiler implements IEmailCompiler {
       },
     );
 
+    const bcc = bccOrderConfirmed ? [bccOrderConfirmed, senderEmail] : senderEmail;
+
     return Result.combine([subjectCompilationResult, bodyCompilationInHtmlResult]).andThen(
       ([subjectCompiled, bodyCompiledHtml]) => {
         return this.resolveBodyPlainText(bodyCompiledHtml).andThen((bodyPlainText) => {
@@ -142,7 +144,7 @@ export class EmailCompiler implements IEmailCompiler {
             html: bodyCompiledHtml,
             from: `${senderName} <${senderEmail}>`,
             to: recipientEmail,
-            bcc: bccOrderConfirmed,
+            bcc: bcc,
             subject: subjectCompiled.template,
           });
         });
