@@ -15,11 +15,14 @@ interface CompileArgs {
   subjectTemplate: string;
   senderName: string;
   senderEmail: string;
+  bccOrderConfirmed: string;
+  bccOrderFulfilled: string;
 }
 
 export interface CompiledEmail {
   from: string;
   to: string;
+  bcc: string;
   text: string;
   html: string;
   subject: string;
@@ -115,6 +118,8 @@ export class EmailCompiler implements IEmailCompiler {
     bodyTemplate,
     senderEmail,
     senderName,
+    bccOrderConfirmed,
+    bccOrderFulfilled,
   }: CompileArgs): Result<CompiledEmail, InstanceType<typeof EmailCompiler.EmailCompilerError>> {
     const logger = createLogger("EmailCompiler", {
       event,
@@ -137,6 +142,7 @@ export class EmailCompiler implements IEmailCompiler {
             html: bodyCompiledHtml,
             from: `${senderName} <${senderEmail}>`,
             to: recipientEmail,
+            bcc: bccOrderConfirmed,
             subject: subjectCompiled.template,
           });
         });

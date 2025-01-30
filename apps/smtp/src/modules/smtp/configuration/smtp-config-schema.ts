@@ -21,6 +21,8 @@ export const smtpConfigurationSchema = z.object({
   name: z.string().min(1),
   senderName: z.string().optional(),
   senderEmail: z.string().email().min(5).optional(),
+  bccOrderConfirmed: z.string().email().min(5).optional(),
+  bccOrderFulfilled: z.string().email().min(5).optional(),
   smtpHost: z.string().min(1),
   smtpPort: z.string().min(1),
   smtpUser: z.string().optional(),

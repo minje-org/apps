@@ -120,6 +120,8 @@ export class SendEventMessagesUseCase {
       subjectTemplate: eventSettings.subject,
       senderEmail: config.senderEmail,
       senderName: config.senderName,
+      bccOrderConfirmed: config.bccOrderConfirmed,
+      bccOrderFulfilled: config.bccOrderFulfilled,
     });
 
     if (preparedEmailResult.isErr()) {

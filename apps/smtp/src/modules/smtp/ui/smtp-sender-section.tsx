@@ -27,6 +27,8 @@ export const SmtpSenderSection = ({ configuration }: SmtpSenderSectionProps) => 
       id: configuration.id,
       senderName: configuration.senderName,
       senderEmail: configuration.senderEmail,
+      bccOrderConfirmed: configuration.bccOrderConfirmed,
+      bccOrderFulfilled: configuration.bccOrderFulfilled,
     },
     resolver: zodResolver(smtpUpdateSenderSchema),
   });
@@ -73,11 +75,25 @@ export const SmtpSenderSection = ({ configuration }: SmtpSenderSectionProps) => 
               control={control}
               helperText="Email address that will be used as sender"
             />
+
             <Input
               label="Name"
               name="senderName"
               control={control}
               helperText="Name that will be used as sender"
+            />
+
+            <Input
+              label="bccOrderConfirmed"
+              name="bccOrderConfirmed"
+              control={control}
+              helperText="bcc for order confirmed"
+            />
+            <Input
+              label="bccOrderFulfilled"
+              name="bccOrderFulfilled"
+              control={control}
+              helperText="bcc for order fulfilled"
             />
           </Box>
           <BoxFooter>

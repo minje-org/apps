@@ -53,6 +53,8 @@ export const smtpUpdateSenderSchema = smtpConfigurationSchema.pick({
   id: true,
   senderEmail: true,
   senderName: true,
+  bccOrderConfirmed: true,
+  bccOrderFulfilled: true,
 });
 
 export type SmtpUpdateSender = z.infer<typeof smtpUpdateSenderSchema>;
