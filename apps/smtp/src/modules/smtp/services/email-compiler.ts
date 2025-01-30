@@ -15,14 +15,14 @@ interface CompileArgs {
   subjectTemplate: string;
   senderName: string;
   senderEmail: string;
-  bccOrderConfirmed: string;
-  bccOrderFulfilled: string;
+  bccOrderConfirmed: string | undefined;
+  bccOrderFulfilled: string | undefined;
 }
 
 export interface CompiledEmail {
   from: string;
   to: string;
-  bcc: string;
+  bcc: string | string[];
   text: string;
   html: string;
   subject: string;

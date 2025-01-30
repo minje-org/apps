@@ -18,7 +18,7 @@ export interface SendMailArgs {
   mailData: {
     from: string;
     to: string;
-    bcc: string;
+    bcc: string | string[];
     text: string;
     html: string;
     subject: string;
